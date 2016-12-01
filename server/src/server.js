@@ -8,20 +8,8 @@ var app = express();
 
 app.use(bodyParser.text());
 
-app.get('/', function(req, res){
-  res.send('Hello World!');
-});
+app.use(express.static('../client/build'));
 
 app.listen(3000, function(){
   console.log('Example app listening on port 3000');
-});
-
-app.post('/reverse', function(req, res){
-
-  if (typeof(req.body) === 'string'){
-    var reversed = reverseString(req.body);
-    res.send(reversed);
-  }else{
-    res.status(400).end()
-  }
 });
